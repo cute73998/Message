@@ -21,11 +21,12 @@
                     <th><strong>Text</strong></th>
                     <th><strong>User</strong></th>
                     <th><strong>Date</strong></th>
+                    <th><strong>Function</strong></th>
                 </tr>
             </thead>
             <tbody>
                 <% if(messages.length> 0){ %>
-                    <% messages.map(m=> { %>
+                    <% messages.map((m, index)=> { %>
                         <tr>
                             <td>
                                 <%= m.text %>
@@ -35,6 +36,9 @@
                             </td>
                             <td>
                                 <%= new Date(m.added).toLocaleDateString() %>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger"><a class="text-light list-unstyled" href="/delete/<%= index %>">Delete</a></button>
                             </td>
                         </tr>
                         <%})%>
