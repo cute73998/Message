@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "path": "^0.12.7"
+  },
+  "scripts": {
+    "start": "node app.js"
+  }
+}
