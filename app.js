@@ -1,6 +1,15 @@
 const express = require('express');
 const app = express();
 
+const { types } = require('pg');
+
+// OID 20 là kiểu BIGINT trong PostgreSQL
+// Đặt parser để chuyển đổi BIGINT thành Number
+types.setTypeParser(20, function (val) {
+  // Chỉ chuyển đổi nếu giá trị khác null
+  return val === null ? null : parseInt(val, 10);
+});
+
 const indexRouter = require('./routes/index');
 const path = require('path');
 
