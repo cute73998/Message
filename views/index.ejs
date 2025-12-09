@@ -37,14 +37,14 @@
                                 <%= m.text %>
                             </td>
                             <td>
-                                <%= m.user %>
+                                <%= m.username %>
                             </td>
                             <td>
                                 <%= new Date(m.added).toLocaleDateString() %>
                             </td>
                             <td>
                                 <button class="btn btn-danger"><a class="text-light list-unstyled"
-                                        href="/delete/<%= index %>">Delete</a></button>
+                                        href="/delete/<%= m.username %>">Delete</a></button>
                             </td>
                         </tr>
                         <%})%>

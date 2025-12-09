@@ -1,25 +1,27 @@
 const express = require('express');
+const query = require('../db/queries.js');
 const app = express.Router();
 let messages = [];
 app.use(express.urlencoded({ extended: true }));
 
 
-app.get('/', (req, res) => {
-    res.render('index', { messages });
+app.get('/', async (req, res) => {
+    const messages = await query.getAllMessages();
+    res.render('index', {messages});
 })
 
 app.get('/new', (req, res) => {
     res.render('new');
 })
 
-app.post('/new', (req, res) => {
-    messages.push({ text: req.body.text, user: req.body.user, added: new Date().getTime() });
+app.post('/new', async (req, res) => {
+    await query.insertMessage(req.body.text, req.body.user, new Date().getTime());
     res.redirect('/');
 });
 
-app.get('/delete/:index', (req, res) => {
-    const index = req.params.index;
-    messages = messages.filter((m, i) => i != index);
+app.get('/delete/:username', (req, res) => {
+    const username = req.params.username;
+    query.deleteMessage(username);
     res.redirect('/');
 })
 
