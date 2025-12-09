@@ -1,7 +1,6 @@
 const express = require('express');
 const query = require('../db/queries.js');
 const app = express.Router();
-let messages = [];
 app.use(express.urlencoded({ extended: true }));
 
 
